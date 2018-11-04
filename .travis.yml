@@ -1,0 +1,37 @@
+env:
+  global:
+  - SWIFT_BRANCH=swift-4.2-branch
+  - SWIFT_VERSION=swift-4.2-DEVELOPMENT-SNAPSHOT-2018-05-30-a
+matrix:
+  include:
+  - os: linux
+    language: generic
+    dist: trusty
+    sudo: required
+    install:
+    - sudo apt-get install clang libicu-dev
+    - mkdir swift
+    - curl https://swift.org/builds/$SWIFT_BRANCH/ubuntu1404/$SWIFT_VERSION/$SWIFT_VERSION-ubuntu14.04.tar.gz
+      -s | tar xz -C swift &> /dev/null
+    - export PATH="$(pwd)/swift/$SWIFT_VERSION-ubuntu14.04/usr/bin:$PATH"
+    script:
+    - swift package update
+    - swift test
+  - os: osx
+    osx_image: xcode9.3
+    language: swift
+    sudo: required
+    install:
+    - wget https://swift.org/builds/$SWIFT_BRANCH/xcode/$SWIFT_VERSION/$SWIFT_VERSION-osx.pkg
+    - sudo installer -pkg $SWIFT_VERSION-osx.pkg -target /
+    - export PATH="/Library/Developer/Toolchains/$SWIFT_VERSION.xctoolchain/usr/bin:$PATH"
+    script:
+    - swift package update
+    - swift test
+deploy:
+  provider: releases
+  api_key:
+    secure: TDOMQkgvRjvomNSvFcv2ZOV2FJANTr/7RaLOznaw0s6aWDqCwxLlwFNKX44Kwx+RpZX+ZYvdB2nLrH6M8Ya2mA4/8tzHKIq1Ehmli1PtM9VsMC+5Ga5Jsgq6v4EPFJvtk2SFXUoFITsUhnOJRuvTgSwarAfW+bxRwxAD8Y9kTi5WKIiBUyH6omHlKCdGFutf+hvz2sUHpLRaBf7jjUeerjCEd17r7knijWxuqPgzeFFVhB8L1LJd6+XeisE2V0sxxupJn/a1sg3kuvI+vSgRtu4FHnIsafRy1GAd5uf26JIIuMQt5Zxpwk3D3OkPUoTHTAYvJocRtvKlBtITxkMvoYycgNSpvZ892k3WDsIwNLkA92MBToTrKDUxBmHAHO46V3MCe2SpVE6hnCSUlQ0d/bGoPaNFe/C8qSQ4TE6G9KGTH0rzCGpfkf6ee/7IvlZtoiTUSQPUM+YRJSVypsICBjwBDXG2vkEmlnQ2MFOqhQPWL/w1O6fe14Ac5QgWbtN2BR1ir5guS9vMpOvPEVitkUpvdtQ3GGDvVXKE9wmM/PjzV4mHbriShbAAtI61rulnlSuBqpDKJu/Iry48Ben6KW3x/8QHvSQjfpIgGYI+mzwGry8sxjKJQF1bMLMaP2FoYPFDSEld4thYKg6DjBlnQRdkHl96s5l1Hap02xrr004=
+  file: ''
+  on:
+    repo: beatsbears/Incrementer
