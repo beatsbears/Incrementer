@@ -37,5 +37,4 @@ jobs:
     - git config --global user.email "builds@travis-ci.com"
     - git config --global user.name "Travis CI"
     - git tag $PACKAGE_VERSION -a -m "Generated release from TravisCI build $TRAVIS_BUILD_NUMBER"
-    - git push --quiet https://$GH_TOKEN@github.com/beatsbears/Incrementer --tag >
-      /dev/null 2>&1
+    - git push --quiet https://$GH_TOKEN@github.com/beatsbears/Incrementer --tag > /dev/null 2>&1
