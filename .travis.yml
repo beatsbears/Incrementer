@@ -1,3 +1,7 @@
+if: tag IS blank
+branches:
+  only:
+  - master
 env:
   global:
   - SWIFT_BRANCH=swift-4.2-branch
