@@ -3,7 +3,7 @@ env:
   - SWIFT_BRANCH=swift-4.2-branch
   - SWIFT_VERSION=swift-4.2-DEVELOPMENT-SNAPSHOT-2018-05-30-a
   - PACKAGE_VERSION=0.0.2
-  - secure: ztyf0yMLl6zu/GvtsMsYo0yq3LT8hy7iRGux+095oa4MO0OR4QY5PpAGBFBgQiNMb3K9/pCIMI6jvQYZuxDJ1oNLkF4U3Tq6s5pz3xNj+EIfgXVp3gToWRgd9xT2OAZ+je5dlCIaHqC4AugrFFSefwQ0eyyD1aaw9LT9No29x+qU7KDulPONOol7EZEFEIiJT4sTdCUNj3zS0Kym/qWVQ7TIXCZ6Yl9pyIs6amkooeHz0pWm8WfjIbglOo8uKLahTL1V7vM/h2WRb57l1KsRUT9kSqonS50RVhbNNev2bm2+bxBkzha53XmSb8Mqao2CS8I9EXi+dLCL4Fy5fbP5P7tXmjhOUh9s9MYMZsu61KyzyZOmL0AN60iuFZ7hc75uRgGQDAcdJ1dNCuWM0NtGknjais5VbD/b4kVn4xrECtWXcw7cGZZ/SIK5pfLaMIGnB1BLrtyGdlFtS9yAnVRcHC9G7yMNuh1R/5QLnOqEuss//BuyyIbrz2tceToS90E8CoO5PFBjS5OBfe80hr+yFPbHk42w59KdrYCqxpSGM3sYiSOeY2TgEMgeAG5UtNHSctDmNAgsosOCnql+Kxjj1ZVPumLCQ4yL9DjF70tMyf9ZsAjOn4KGVqJNJup58rC11Wjd17e7jia02Tw/ctJz0+EkQo2kDEHslX+tZa7sVIQ=
+  - secure: vBjCKTVgNiCVyqMcQm5HHe8aGSfIAn41BXvKpN2CuLFPQfAIkGHttncNoxCflD4PE/obgS6KPolRwu1LNeCqveB3cqdM4ekwcjmpet8PFDOzQrsyX7uTfiegOxKbUD5Z+6B4N2EM+CmpptaW73fwvZw+tol+TUPSNseYOSiDzgZgCjlWUNw6xH5e/iloJZU6dB//0N8eNYTNEFhEbtwe89sLU68SbPGGEjG/jns9zCGDQ4QxH/l/hwoDaFDqh3ZrJf/6vwqKFWzGSvbCRlYswUFNIkndYcSZ0CWCcWuI92OQIhOScRnPfo+KnSBiQ2/Vz8RKwUiFi0cG7RGmmu0kRBjz1a8A2sIVKci7SWoN0wl6i/jY41TaqtAmKOMf+mHO9uj7bfRVoc6XslvZI5SPTmXUmF6GMBjSuLCkWVNULUmyqaSGVKUiAZWkvoHuMgyfmO1pifU2saF7V0aC4mVYQdH2y8elKgIUGB3NJtLf4D9RfEgYC1Jo6TqS0d6kC6WBWT4YzsH/ud2nLxPYmis73MyQ8DtaEgPPFnHeLMYmVOcKfivl74LlnFjVGTHm+enAolP80VgC6W0zM4y15cB++STFTYAJ62nWbG78eXSia+kbwyS4BpCMMXE0p9Y4hi1bM75uypgpEZkP2JPzMLeXsmUFRnBa+nCKmZCKLcdQvU4=
 jobs:
   include:
   - stage: Linux test
@@ -37,4 +37,5 @@ jobs:
     - git config --global user.email "builds@travis-ci.com"
     - git config --global user.name "Travis CI"
     - git tag $PACKAGE_VERSION -a -m "Generated release from TravisCI build $TRAVIS_BUILD_NUMBER"
-    - git push --quiet https://$GH_TOKEN@github.com/beatsbears/Incrementer --tag > /dev/null 2>&1
+    - git push --quiet https://$GH_TOKEN@github.com/beatsbears/Incrementer --tag >
+      /dev/null 2>&1
