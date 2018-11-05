@@ -6,7 +6,7 @@ env:
   global:
   - SWIFT_BRANCH=swift-4.2-branch
   - SWIFT_VERSION=swift-4.2-DEVELOPMENT-SNAPSHOT-2018-05-30-a
-  - PACKAGE_VERSION=0.0.2
+  - PACKAGE_VERSION=0.0.3
   - secure: vBjCKTVgNiCVyqMcQm5HHe8aGSfIAn41BXvKpN2CuLFPQfAIkGHttncNoxCflD4PE/obgS6KPolRwu1LNeCqveB3cqdM4ekwcjmpet8PFDOzQrsyX7uTfiegOxKbUD5Z+6B4N2EM+CmpptaW73fwvZw+tol+TUPSNseYOSiDzgZgCjlWUNw6xH5e/iloJZU6dB//0N8eNYTNEFhEbtwe89sLU68SbPGGEjG/jns9zCGDQ4QxH/l/hwoDaFDqh3ZrJf/6vwqKFWzGSvbCRlYswUFNIkndYcSZ0CWCcWuI92OQIhOScRnPfo+KnSBiQ2/Vz8RKwUiFi0cG7RGmmu0kRBjz1a8A2sIVKci7SWoN0wl6i/jY41TaqtAmKOMf+mHO9uj7bfRVoc6XslvZI5SPTmXUmF6GMBjSuLCkWVNULUmyqaSGVKUiAZWkvoHuMgyfmO1pifU2saF7V0aC4mVYQdH2y8elKgIUGB3NJtLf4D9RfEgYC1Jo6TqS0d6kC6WBWT4YzsH/ud2nLxPYmis73MyQ8DtaEgPPFnHeLMYmVOcKfivl74LlnFjVGTHm+enAolP80VgC6W0zM4y15cB++STFTYAJ62nWbG78eXSia+kbwyS4BpCMMXE0p9Y4hi1bM75uypgpEZkP2JPzMLeXsmUFRnBa+nCKmZCKLcdQvU4=
 jobs:
   include:
@@ -40,5 +40,5 @@ jobs:
     script:
     - git config --global user.email "builds@travis-ci.com"
     - git config --global user.name "Travis CI"
-    - git tag $PACKAGE_VERSION -a -m "Generated release from TravisCI build $TRAVIS_BUILD_NUMBER"
+    - git tag $PACKAGE_VERSION
     - git push --quiet https://$GH_TOKEN@github.com/beatsbears/Incrementer --tag > /dev/null 2>&1
